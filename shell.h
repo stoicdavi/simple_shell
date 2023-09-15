@@ -15,17 +15,22 @@
 #include <errno.h>
 #include <stdbool.h>
 
-typedef struct passinfo
-{
-	char *arg;
-	char **argv;
-	int argc;
-	int readfd;
-} info_t;
-
-int interactive(info_t *);
-int is_delim(char, char *);
-int _isalpha(int);
-int _atoi(char *);
 int execute(const char *filename, char *const argv[], char *const envp[]);
+/**
+ * struct var_list - single linked list
+ * @len_var: length of the variable
+ * @val: value of the variable
+ * @len_val: length of the value
+ * @next: next node
+ * Description: single linked list to store variables
+ */
+typedef struct var_list
+{
+	int len_var;
+	char *val;
+	int len_val;
+	struct var_list *next;
+} var_lst;
+
+
 #endif /*END OF SHELL.H*/
