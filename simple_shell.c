@@ -9,7 +9,8 @@
 int main(int ac, char *av[], char **envar)
 {
 	char *buff = NULL, *prompt = "$ ";
-	size_t buff_size = 0, bytes;
+	size_t buff_size = 0;
+	int bytes;
 	pid_t pid;
 	int wstatus;
 	bool from_pipe = true;
@@ -21,14 +22,15 @@ int main(int ac, char *av[], char **envar)
 			from_pipe = false;
 		write(STDOUT_FILENO, prompt, 2);
 		bytes = getline(&buff, &buff_size, stdin);
-		if (!bytes)
+		if (bytes <= 0)
 		{
-			perror("Error getline failed");
-			free(buff);
-			exit(EXIT_FAILURE);
+			write(STDOUT_FILENO, "\n", 1);
+			break;
 		}
 		if (buff[bytes - 1] == '\n')
 			buff[bytes - 1] = '\0';
+		if (strcmp(buff, "exit") == 0)
+			break;
 		pid = fork();
 		if (pid == -1)
 		{
@@ -65,5 +67,5 @@ int execute(const char *filename, char *const argv[], char *const envp[])
 	{
 		perror("./shell");
 	}
-	return (exec_status);
+	exit(EXIT_FAILURE);
 }
