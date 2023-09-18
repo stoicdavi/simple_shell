@@ -9,10 +9,9 @@
 int main(int ac, char *av[], char **envar)
 {
 	char *buff = NULL, *prompt = "$ ";
-	size_t buff_size = 0;
-	int bytes;
-	pid_t pid;
+	size_t buff_size = 1, bytes;
 	int wstatus;
+	pid_t pid;
 	bool from_pipe = true;
 	(void) ac;
 
