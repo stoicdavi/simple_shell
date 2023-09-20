@@ -13,6 +13,9 @@
 #include <errno.h>
 #include <stdbool.h>
 
+#define MAX_INPUT_LENGTH 1024
+#define MAX_ARGS 64
+
 int execute(const char *filename, char *const argv[], char *const envp[]);
 bool prog_Exists(const char *filename);
 
