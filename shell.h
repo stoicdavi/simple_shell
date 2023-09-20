@@ -19,6 +19,8 @@
 int execute(const char *filename, char *const argv[], char *const envp[]);
 bool prog_Exists(const char *filename);
 
+int check_file(char *full_path);
+
 char *_strcpy(char *dest, char *src, int n);
 char *_strdup(char *str);
 char *_strcat(char *dest, char *src);
@@ -27,5 +29,4 @@ int _strlen(char *s);
 
 char *_strtok(char *line, char *delim);
 
-void tokenize(data_of_program *data);
 #endif /*END OF SHELL.H*/
