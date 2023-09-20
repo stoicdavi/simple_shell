@@ -1,4 +1,5 @@
 #include "shell.h"
+
 /**
  * _strtok - funtion to separate strings with delimiters
  * @line: the string to be separated.
@@ -7,7 +8,7 @@
  */
 char *_strtok(char *line, char *delim)
 {
-	int k;
+	int a;
 	static char *str;
 	char *copystr;
 
@@ -15,12 +16,12 @@ char *_strtok(char *line, char *delim)
 		str = line;
 	for (; *str != '\0'; str++)
 	{
-		for (j = 0; delim[j] != '\0'; j++)
+		for (b = 0; delim[b] != '\0'; b++)
 		{
-			if (*str == delim[j])
+			if (*str == delim[b])
 				break;
 		}
-		if (delim[j] == '\0')
+		if (delim[b] == '\0')
 			break;
 	}
 	copystr = str;
@@ -28,9 +29,9 @@ char *_strtok(char *line, char *delim)
 		return (NULL);
 	for (; *str != '\0'; str++)
 	{
-		for (j = 0; delim[j] != '\0'; j++)
+		for (b = 0; delim[b] != '\0'; b++)
 		{
-			if (*str == delim[j])
+			if (*str == delim[b])
 			{
 				*str = '\0';
 				str++;
