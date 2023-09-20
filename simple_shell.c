@@ -13,7 +13,7 @@ int main(int ac, char *av[], char **envar)
 	int wstatus;
 	pid_t pid;
 	bool from_pipe = true;
-	(void) ac;
+	(void)ac;
 
 	while (1 && from_pipe)
 	{
@@ -34,7 +34,6 @@ int main(int ac, char *av[], char **envar)
 		if (pid == -1)
 		{
 			perror("Error: fork failed");
-			free(buff);
 			exit(EXIT_FAILURE);
 		}
 		if (pid == 0)/*child process*/
