@@ -10,13 +10,12 @@ char *_strtok(char *line, char *delim)
 {
 	static char *str;
 	char *copystr;
-	int i = 0;
+	int i = 0, b = 0;
 
 	if (line != NULL)
 		str = line;
 	while (*str != '\0')
 	{
-		int b;
 		str++;
 		for (b = 0; delim[b] != '\0'; b++)
 		{
@@ -33,9 +32,10 @@ char *_strtok(char *line, char *delim)
 	for (i = 0; str[i] != '\0'; i++)
 	{
 		int b;
+
 		for (b = 0; delim[b] != '\0'; b++)
 		{
-			if (str[i] == delim[b]) 
+			if (str[i] == delim[b])
 			{
 				str[i] = '\0';
 				str++;
