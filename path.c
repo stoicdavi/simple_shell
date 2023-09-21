@@ -1,33 +1,43 @@
 #include "shell.h"
+
 /**
- * _path - fucntion to check path
- * @ac: argument count
- * @av: argument value
+ * find_command_path - searches through the directories to find a command
+ *
+ * Return: absolute path to the command if found, else NULL
  */
-int _path(int ac, char **av)
+char *find_command_path(char **command)
 {
-	unsigned int i;
-	struct stat st;
+	char *path_var = getenv("PATH");
+	char *path_dir = NULL;
+	char *cmd_path = NULL;
 
-	if (ac < 2)
-	{
-		printf("Usage: %s path_to_file ...\n", av[0]);
-		return (1);
+	if (!command || !command[0]) {
+		return NULL;
 	}
 
-	i = 1;
-	while (av[i])
-	{
-		printf("%s:", av[i]);
-		if (stat(av[i], &st) == 0)
-		{
-			printf(" FOUND\n");
-		}
-		else
-		{
-			printf(" NOT FOUND\n");
-		}
-		i++;
+	if (access(command[0], F_OK) == 0)
+		return strdup(command[0]);
+
+	if (!path_var)
+		return NULL;
+	path_dir = strtok(path_var, ":");
+	if (!path_dir) {
+		return NULL;
 	}
-	return (0);
+	while (path_dir)
+	{
+		cmd_path = malloc(1024);
+		strcpy(cmd_path, path_dir);
+		strcat(cmd_path, "/");
+		strcat(cmd_path, command[0]);
+
+		if (access(cmd_path, F_OK) == 0)
+		{
+			free(path_dir);
+			return cmd_path;
+		}
+		free(cmd_path);
+		path_dir = strtok(NULL, ":");
+	}
+	return NULL;
 }
