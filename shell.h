@@ -21,12 +21,6 @@
  * @str: a string
  * @next: points to the next node
  */
-typedef struct liststr
-{
-	int num;
-	char *str;
-	struct liststr *next;
-} list_t;
 
 
 char *_strcpy(char *dest, char *src, int n);
