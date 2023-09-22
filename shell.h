@@ -28,7 +28,7 @@ char *_strdup(char *str);
 char *_strcat(char *dest, char *src);
 int _strcmp(char *s1, char *s2);
 int _strlen(char *s);
-
+int isInputInteractive(void);
 char *_strtok(char *line, char *delim);
 
 #endif /*END OF SHELL.H*/

@@ -8,12 +8,13 @@
 int main(void)
 {
 	char input[MAX_INPUT_LENGTH], *args[MAX_ARGS], *token;
-	int status, num_args = 0;
+	int  num_args = 0, status;
 	pid_t pid;
 
 	while (1)
 	{
-		printf("$ ");
+		if (isInputInteractive())
+			printf("$ ");
 		fgets(input, sizeof(input), stdin);
 		input[strlen(input) - 1] = '\0';
 		token = strtok(input, " ");
@@ -45,6 +46,5 @@ int main(void)
 		else
 			perror("fork");
 	}
-
 	return (0);
 }
