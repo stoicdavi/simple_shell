@@ -57,6 +57,7 @@ typedef struct builtin
 	char *type;
 	int (*func)(info_t *);
 } builtin_table;
+
 /**
  * struct passinfo - contains pseudo-arguements to pass into a function,
  * allowing uniform prototype for function pointer struct
