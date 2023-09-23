@@ -1,5 +1,4 @@
 #include "shell.h"
-
 /**
  * _strcat - function to combine two strings
  * @dest: destination string where the result of concat will be stored
@@ -21,8 +20,6 @@ char *_strcat(char *dest, char *src)
 	dest[destInd] = '\0';
 	return (dest);
 }
-
-
 /**
  * _strcpy - function to copy src string to dest string
  * @dest: holds to string coppied
@@ -30,7 +27,6 @@ char *_strcat(char *dest, char *src)
  * @n: size of the string
  * Return: pointer to the updated string after copying (dest)
  */
-
 char *_strcpy(char *dest, char *src, int n)
 {
 	int a = 0;
@@ -97,13 +93,11 @@ int _strcmp(char *s1, char *s2)
 	}
 	return (0);
 }
-
 /**
  * _strlen - returns the lenth of a string
  * @s: The string to be checked for length
  * Return: length of the string
  */
-
 int _strlen(char *s)
 {
 	int len = 0;

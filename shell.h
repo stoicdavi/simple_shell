@@ -15,6 +15,8 @@
 
 #define MAX_INPUT_LENGTH 1024
 #define MAX_ARGS 64
+void free_array(char **arr);
+int exit_shell(char *exit_status);
 
 #define READ_BUF_SIZE 1024
 #define WRITE_BUF_SIZE 1024
@@ -108,49 +110,17 @@ bool prog_Exists(const char *filename);
 
 int check_file(char *full_path);
 
-char *_strcpy(char *dest, char *src, int n);
+char *_strcpy(char *nest, char *src, int n);
 char *_strdup(char *str);
 char *_strcat(char *dest, char *src);
 int _strcmp(char *s1, char *s2);
 int _strlen(char *s);
-
+int isInputInteractive(void);
 char *_strtok(char *line, char *delim);
 
-/* toem_cmdline_handler.c */
-int interactive(info_t *);
-int is_delim(char, char *);
-int _isalpha(int);
-int _atoi(char *);
-
-/* toem_arg_handler.c */
-int _myexit(info_t *);
-int _mycd(info_t *);
-int _myhelp(info_t *);
-
-/* toem_exit.c */
-void _eputs(char *);
-int _eputchar(char);
-int _putfd(char c, int fd);
-int _putsfd(char *str, int fd);
-
-
-/* toem_errors1.c */
-int _erratoi(char *);
-void print_error(info_t *, char *);
-int print_d(int, int);
-char *convert_number(long int, int, int);
-void remove_comments(char *);
-
-
-/* toem_path_handler.c */
-int _myhistory(info_t *);
-int _myalias(info_t *);
-
-/* toem_env.c */
-char *_getenv(info_t *, const char *);
-int _myenv(info_t *);
-int _mysetenv(info_t *);
-int _myunsetenv(info_t *);
-int populate_env_list(info_t *);
-
+extern int status;
+extern char *line;
+extern char **command;
+extern int shell_count;
+extern char *shell;
 #endif /*END OF SHELL.H*/
