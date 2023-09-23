@@ -7,9 +7,7 @@
  */
 char *find_command_path(char **command)
 {
-	char *path_var = getenv("PATH");
-	char *path_dir = NULL;
-	char *cmd_path = NULL;
+	char *path_var = getenv("PATH"), *path_dir = NULL, *cmd_path = NULL;
 
 	if (!command || !command[0])
 		return (NULL);

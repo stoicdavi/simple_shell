@@ -15,15 +15,10 @@
 
 #define MAX_INPUT_LENGTH 1024
 #define MAX_ARGS 64
-/**
- * struct liststr - singly linked list
- * @num: the number field
- * @str: a string
- * @next: points to the next node
- */
+void free_array(char **arr);
+int exit_shell(char *exit_status);
 
-
-char *_strcpy(char *dest, char *src, int n);
+char *_strcpy(char *nest, char *src, int n);
 char *_strdup(char *str);
 char *_strcat(char *dest, char *src);
 int _strcmp(char *s1, char *s2);
@@ -31,4 +26,9 @@ int _strlen(char *s);
 int isInputInteractive(void);
 char *_strtok(char *line, char *delim);
 
+extern int status;
+extern char *line;
+extern char **command;
+extern int shell_count;
+extern char *shell;
 #endif /*END OF SHELL.H*/
