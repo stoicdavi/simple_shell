@@ -1,12 +1,14 @@
 #include "shell.h"
 /**
- * exit_shell - exit
- * @exit_status; status
+ * exit_shell - exit shell
+ * @exit_status: status
+ * Return: 2 on success
  */
 int exit_shell(char *exit_status)
 {
 	int status = 0;
 	char *line = NULL, **command = NULL;
+
 	if (!exit_status)
 	{
 		free(line);
